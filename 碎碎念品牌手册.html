@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>碎碎念 · 品牌手册</title>
+<style>
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    color: #2D2D2D;
+    background: #FBF9F6;
+    line-height: 1.78;
+  }
+
+  /* ===== Page Structure ===== */
+  .page {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 72px 64px;
+    page-break-after: always;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+  .page + .page { margin-top: 40px; }
+  @media print {
+    body { background: #fff; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      padding: 60px 56px;
+      max-width: 100%;
+      page-break-after: always;
+    }
+    .page + .page { margin-top: 0; }
+    .no-print { display: none !important; }
+  }
+
+  /* ===== Cover ===== */
+  .cover {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; min-height: 90vh;
+    background: linear-gradient(160deg, #FFF8F0 0%, #FFF0E5 40%, #FFE8D6 100%);
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(232,152,108,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: ''; position: absolute; bottom: -40px; left: -60px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(194,142,112,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-content { position: relative; z-index: 1; }
+  .cover-tag {
+    font-size: 0.85rem; letter-spacing: 0.28em; color: #B8754F;
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+  .cover-title {
+    font-size: 3.6rem; font-weight: 700; color: #3A2213;
+    letter-spacing: 0.06em; margin-bottom: 12px;
+  }
+  .cover-subtitle {
+    font-size: 1.15rem; color: #8B6B58; letter-spacing: 0.12em;
+    margin-bottom: 48px; font-weight: 300;
+  }
+  .cover-divider {
+    width: 48px; height: 2px; background: #C28E70; margin: 0 auto 48px;
+  }
+  .cover-meta {
+    font-size: 0.8rem; color: #B8987E; letter-spacing: 0.1em;
+    line-height: 2;
+  }
+
+  /* ===== Typography ===== */
+  h1 { font-size: 2rem; font-weight: 700; color: #3A2213; letter-spacing: 0.04em; margin-bottom: 8px; }
+  h2 { font-size: 1.5rem; font-weight: 600; color: #5A3A28; letter-spacing: 0.03em; margin-bottom: 6px; }
+  h3 { font-size: 1.1rem; font-weight: 600; color: #6B4530; margin-bottom: 6px; }
+  h4 { font-size: 0.95rem; font-weight: 600; color: #7D5640; margin-bottom: 4px; }
+  .section-number {
+    font-size: 0.75rem; letter-spacing: 0.2em; color: #C28E70;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+
+  /* ===== Components ===== */
+  .section-header { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid #EDE0D7; }
+  .section-header h1 { margin-bottom: 8px; }
+  .section-header p { color: #8B7B6F; font-size: 0.95rem; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+  .card {
+    background: #FAF7F3; border-radius: 10px; padding: 24px;
+    border: 1px solid #F0E8E0;
+  }
+  .card h3 { margin-bottom: 10px; }
+
+  /* Color Swatches */
+  .color-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 16px 0 28px; }
+  .color-item { flex: 1; min-width: 120px; }
+  .color-swatch {
+    width: 100%; height: 90px; border-radius: 10px; margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .color-name { font-weight: 600; font-size: 0.88rem; }
+  .color-code { font-size: 0.78rem; color: #8B7B6F; font-family: "SF Mono", "Consolas", monospace; }
+
+  /* Logo Showcase */
+  .logo-showcase {
+    display: flex; align-items: center; justify-content: center;
+    gap: 48px; padding: 48px 32px; background: #FAF7F3;
+    border-radius: 12px; margin: 20px 0;
+  }
+  .logo-box {
+    text-align: center; padding: 24px 32px; border-radius: 10px;
+  }
+  .logo-box.light { background: #fff; border: 1px solid #F0E8E0; }
+  .logo-box.dark  { background: #3A2213; color: #fff; }
+  .logo-box.dark .logo-label { color: #C28E70; }
+  .logo-label { font-size: 0.75rem; color: #B8987E; margin-top: 12px; letter-spacing: 0.08em; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
+  th, td {
+    text-align: left; padding: 12px 16px; border-bottom: 1px solid #EDE0D7;
+    font-size: 0.9rem;
+  }
+  th { font-weight: 600; color: #5A3A28; background: #FAF7F3; font-size: 0.82rem; letter-spacing: 0.06em; }
+  td { color: #5A4A3E; }
+
+  /* Do / Don't */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+  .do, .dont {
+    padding: 24px; border-radius: 10px;
+  }
+  .do  { background: #F2F8F0; border: 1px solid #D4E8D0; }
+  .dont { background: #FDF3F0; border: 1px solid #F0D4D0; }
+  .do h4  { color: #4A8A3F; margin-bottom: 10px; }
+  .dont h4 { color: #C44A3F; margin-bottom: 10px; }
+  .do ul, .dont ul { padding-left: 18px; }
+  .do li, .dont li { margin-bottom: 6px; font-size: 0.9rem; }
+
+  /* Brand Voice Scale */
+  .voice-scale {
+    display: flex; align-items: center; gap: 0; margin: 20px 0;
+    height: 48px; border-radius: 24px; overflow: hidden;
+    font-size: 0.82rem; font-weight: 600;
+  }
+  .voice-left {
+    flex: 1; height: 100%; display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 20px; background: #F0E8E0; color: #8B7B6F;
+  }
+  .voice-mid {
+    flex: 2; height: 100%; display: flex; align-items: center; justify-content: center;
+    background: #C28E70; color: #fff; letter-spacing: 0.06em;
+  }
+  .voice-right {
+    flex: 1; height: 100%; display: flex; align-items: center; justify-content: flex-start;
+    padding-left: 20px; background: #F0E8E0; color: #8B7B6F;
+  }
+
+  /* Highlight Box */
+  .highlight {
+    background: linear-gradient(135deg, #FFF8F0, #FFF0E5);
+    border-left: 4px solid #C28E70;
+    padding: 24px 28px; border-radius: 0 10px 10px 0;
+    margin: 20px 0;
+  }
+  .highlight p { font-size: 1.05rem; color: #5A3A28; font-weight: 500; }
+
+  /* TOC */
+  .toc-list { list-style: none; padding: 0; }
+  .toc-list li {
+    display: flex; align-items: baseline; padding: 12px 0;
+    border-bottom: 1px dotted #E0D5C8; font-size: 1rem;
+  }
+  .toc-num {
+    font-weight: 700; color: #C28E70; min-width: 48px;
+    font-size: 0.9rem; letter-spacing: 0.04em;
+  }
+  .toc-title { flex: 1; color: #3A2213; }
+  .toc-page { color: #B8987E; font-size: 0.85rem; }
+
+  /* Brand Pillars */
+  .pillar {
+    text-align: center; padding: 28px 20px;
+  }
+  .pillar-icon {
+    font-size: 2.4rem; margin-bottom: 12px;
+  }
+  .pillar h3 { margin-bottom: 8px; }
+  .pillar p { font-size: 0.88rem; color: #7D6B5E; }
+
+  /* Spacing */
+  .mt-sm { margin-top: 12px; }
+  .mt-md { margin-top: 24px; }
+  .mt-lg { margin-top: 40px; }
+  .mb-sm { margin-bottom: 12px; }
+  .mb-md { margin-bottom: 24px; }
+  .mb-lg { margin-bottom: 40px; }
+  .my-md { margin: 24px 0; }
+
+  /* Footer */
+  .page-footer {
+    margin-top: 48px; padding-top: 16px;
+    border-top: 1px solid #EDE0D7; font-size: 0.75rem;
+    color: #C4B4A6; text-align: right;
+  }
+
+  /* Photo placeholder */
+  .img-placeholder {
+    background: #F5EFE8; border: 2px dashed #E0D5C8; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 140px; color: #C4B4A6; font-size: 0.85rem;
+    margin: 16px 0;
+  }
+
+  /* Typography showcase */
+  .type-showcase { margin: 20px 0; }
+  .type-item {
+    padding: 20px 0; border-bottom: 1px solid #F0E8E0;
+  }
+  .type-label {
+    font-size: 0.75rem; letter-spacing: 0.15em; color: #B8987E;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .type-display { font-size: 2rem; color: #3A2213; font-weight: 700; }
+  .type-body { font-size: 1rem; color: #5A4A3E; }
+
+  /* Application cards */
+  .app-card {
+    border-radius: 10px; overflow: hidden;
+    border: 1px solid #F0E8E0; background: #fff;
+  }
+  .app-card .app-visual {
+    height: 140px; background: #FAF7F3;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; color: #C4B4A6;
+  }
+  .app-card .app-info {
+    padding: 16px;
+  }
+  .app-card .app-info h4 { margin-bottom: 4px; }
+  .app-card .app-info p { font-size: 0.82rem; color: #8B7B6F; }
+
+  /* End page */
+  .end-page {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 70vh; text-align: center;
+  }
+  .end-page h1 { font-size: 2.4rem; margin-bottom: 16px; }
+  .end-page p { color: #8B7B6F; font-size: 1.05rem; line-height: 2; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 1 · COVER                            -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-content">
+    <div class="cover-tag">Brand Identity Guidelines</div>
+    <h1 class="cover-title">碎碎念</h1>
+    <p class="cover-subtitle">拼完整，才能看懂我的心意</p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      品牌手册 v1.0<br>
+      2025 版<br>
+      内部资料 · 注意保密
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 2 · TABLE OF CONTENTS                -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">Contents</div>
+    <h1>目录</h1>
+    <p>本手册系统阐述「碎碎念」品牌体系，包含品牌策略、视觉识别与应用规范。</p>
+  </div>
+
+  <ul class="toc-list">
+    <li><span class="toc-num">01</span><span class="toc-title">品牌概述 · 关于碎碎念</span></li>
+    <li><span class="toc-num">02</span><span class="toc-title">品牌定位 · 我们是谁，为谁而来</span></li>
+    <li><span class="toc-num">03</span><span class="toc-title">品牌理念 · 使命、愿景、价值观</span></li>
+    <li><span class="toc-num">04</span><span class="toc-title">品牌调性 · 人格、语气、情感</span></li>
+    <li><span class="toc-num">05</span><span class="toc-title">视觉识别 · Logo 规范</span></li>
+    <li><span class="toc-num">06</span><span class="toc-title">视觉识别 · 色彩体系</span></li>
+    <li><span class="toc-num">07</span><span class="toc-title">视觉识别 · 字体规范</span></li>
+    <li><span class="toc-num">08</span><span class="toc-title">视觉识别 · 辅助图形与插画</span></li>
+    <li><span class="toc-num">09</span><span class="toc-title">产品体系 · 60片秘密拼图</span></li>
+    <li><span class="toc-num">10</span><span class="toc-title">包装规范</span></li>
+    <li><span class="toc-num">11</span><span class="toc-title">电商视觉规范</span></li>
+    <li><span class="toc-num">12</span><span class="toc-title">品牌传播规范</span></li>
+    <li><span class="toc-num">13</span><span class="toc-title">品牌触点应用</span></li>
+  </ul>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 02</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 3 · BRAND OVERVIEW                   -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">01 · Brand Overview</div>
+    <h1>关于碎碎念</h1>
+    <p>一个用拼图传递心意的情感品牌</p>
+  </div>
+
+  <div class="highlight">
+    <p>「碎碎念」—— 那些藏在心里、反复念叨却说不出口的话，化作一片片拼图。当对方一片片拼起，完整的心意才终于被看见。</p>
+  </div>
+
+  <h3 class="mt-lg">品牌故事</h3>
+  <p>我们都有过这样的时刻：想对某个人说些什么，却不知如何开口。写一封信太重，发一条消息太轻。于是我们创造出「碎碎念」—— 一张看似普通的拼图明信片，背面写满了你想说的话。但只有当你把 60 片碎片一块块拼完整，那些藏在背面的文字才会显现。</p>
+  <p class="mt-sm">拼图的过程，就是打开心意的仪式。每一片碎片都是一句未完的念想，拼完整了，心意才能被读懂。</p>
+
+  <h3 class="mt-lg">品牌名释义</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h3>碎</h3>
+      <p>碎片、破碎。60 片拼图，每一片都承载着不完整的心意。碎的形态，恰恰是心意的容器。</p>
+    </div>
+    <div class="card">
+      <h3>念</h3>
+      <p>念想、思念、念叨。那些萦绕心头的话语，反复斟酌却从未说出口。念是情感本身。</p>
+    </div>
+  </div>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 03</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 4 · BRAND POSITIONING                -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">02 · Brand Positioning</div>
+    <h1>品牌定位</h1>
+    <p>在礼品市场中的独特坐标</p>
+  </div>
+
+  <h3>核心定位</h3>
+  <div class="highlight">
+    <p><strong>碎碎念 = 有仪式感的心意表达载体</strong><br>
+    不是一张卡片，不是一段文字，而是一次需要亲手完成的"阅读仪式"。</p>
+  </div>
+
+  <h3 class="mt-lg">目标人群</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="pillar-icon">💕</div>
+      <h3>情感表达者</h3>
+      <p>18-35 岁情侣、准情侣，追求走心而有仪式感的告白/纪念日礼物。不满足于千篇一律，想要"被记住的惊喜"。</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">👯</div>
+      <h3>深度关系守护者</h3>
+      <p>闺蜜、挚友之间。毕业、生日、异地——在重要节点，用一份需要"亲手拼完"的礼物传递用心。</p>
+    </div>
+    <div class="card">
+      <div class="pillar-icon">🎁</div>
+      <h3>创意场景需求方</h3>
+      <p>创意邀请函、团建破冰、景区文创、企业定制。需要互动感与记忆点的 B 端/小 B 场景。</p>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">品牌主张</h3>
+  <div class="highlight">
+    <p><strong>主 Slogan：</strong>拼完整，才能看懂我的心意</p>
+  </div>
+  <p>这句话既是产品使用方式的直白描述，也是情感隐喻——心意的表达需要耐心与投入，而"看懂"是两个灵魂之间的默契。</p>
+
+  <h3 class="mt-md">差异化优势</h3>
+  <table>
+    <tr><th>维度</th><th>传统贺卡/明信片</th><th>普通礼品</th><th>碎碎念</th></tr>
+    <tr><td>参与感</td><td>低（翻开即读）</td><td>低</td><td><strong>高（60片拼图 = 60次触碰）</strong></td></tr>
+    <tr><td>惊喜感</td><td>中</td><td>中</td><td><strong>极高（拼完才揭晓）</strong></td></tr>
+    <tr><td>仪式感</td><td>低</td><td>中</td><td><strong>极高（拼图 = 仪式）</strong></td></tr>
+    <tr><td>情感承载</td><td>中</td><td>因物而异</td><td><strong>极深（手写 + 隐藏）</strong></td></tr>
+    <tr><td>留存价值</td><td>低</td><td>中</td><td><strong>高（可装裱保存）</strong></td></tr>
+  </table>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 04</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 5 · BRAND PHILOSOPHY                 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">03 · Brand Philosophy</div>
+    <h1>品牌理念</h1>
+    <p>驱动品牌前行的核心信念</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🌱 使命</h3>
+      <p>让每一份深藏的心意，都能被郑重地打开。<br>用拼图的仪式感，为人们创造值得铭记的情感瞬间。</p>
+    </div>
+    <div class="card">
+      <h3>🔭 愿景</h3>
+      <p>成为中国「心意表达」品类的第一联想品牌。<br>当人们想要一份"走心"的礼物时，第一个想到碎碎念。</p>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">品牌价值观</h3>
+  <div class="grid-3">
+    <div class="pillar">
+      <div class="pillar-icon">🤲</div>
+      <h3>真诚</h3>
+      <p>手写的温度无法被印刷取代。我们守护每一份真实的情感表达。</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">✨</div>
+      <h3>仪式感</h3>
+      <p>碎片是故意设置的障碍，拼图是精心设计的仪式。仪式让情感有了分量。</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🎨</div>
+      <h3>美的坚持</h3>
+      <p>从拼图图案到包装，从文案到视觉，每一个触点都必须是美的体验。</p>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">核心精神：拼图即心意</h3>
+  <div class="highlight">
+    <p>60 片碎片，承载 60 句未说出口的话。拼图的过程不是麻烦，而是心意的重量。只有愿意花时间拼完的人，才值得读到那些话。</p>
+  </div>
+  <p>这个核心精神贯穿品牌的每一个触点——产品设计中拼图片数与尺寸的平衡（60片 = 15-20分钟，不长不短刚好是"用心"的时间）、包装的揭秘体验、文案中反复出现的"拼""碎""念"意象。</p>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 05</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 6 · BRAND TONE & VOICE               -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">04 · Brand Tone & Voice</div>
+    <h1>品牌调性</h1>
+    <p>碎碎念如何说话、如何被感知</p>
+  </div>
+
+  <h3>品牌人格</h3>
+  <div class="voice-scale my-md">
+    <div class="voice-left">理性 / 商务</div>
+    <div class="voice-mid">温暖 / 走心 / 细腻</div>
+    <div class="voice-right">浮夸 / 煽情</div>
+  </div>
+  <p style="text-align:center; font-size:0.85rem; color:#8B7B6F; margin-bottom:24px;">
+    碎碎念是「温柔的朋友」—— 不喧哗、不说教，但懂得你心里那些细腻的情绪。
+  </p>
+
+  <h3>品牌语调关键词</h3>
+  <div class="grid-4">
+    <div class="card" style="text-align:center;"><strong>温柔</strong><br><span style="font-size:0.82rem;color:#8B7B6F;">不尖锐、不强势</span></div>
+    <div class="card" style="text-align:center;"><strong>细腻</strong><br><span style="font-size:0.82rem;color:#8B7B6F;">关注微小的情绪</span></div>
+    <div class="card" style="text-align:center;"><strong>真诚</strong><br><span style="font-size:0.82rem;color:#8B7B6F;">不说套话、不套路</span></div>
+    <div class="card" style="text-align:center;"><strong>惊喜</strong><br><span style="font-size:0.82rem;color:#8B7B6F;">藏着期待与发现</span></div>
+  </div>
+
+  <h3 class="mt-lg">文案调性指南</h3>
+  <div class="do-dont">
+    <div class="do">
+      <h4>✅ DO · 这样写</h4>
+      <ul>
+        <li>用第二人称"你"，像在和朋友聊天</li>
+        <li>描述具体场景和情绪，而非抽象概念</li>
+        <li>留白——给读者想象空间</li>
+        <li>融入"拼""碎""念"的品牌意象</li>
+        <li>短句为主，节奏舒缓</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>❌ DON'T · 避免这样</h4>
+      <ul>
+        <li>过度煽情，或使用空洞的套话</li>
+        <li>营销感强的促销语言</li>
+        <li>说教——"你应该……"</li>
+        <li>使用过于年轻/网络化的梗</li>
+        <li>粗暴对比竞品</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="mt-md">文案示例</h3>
+  <div class="highlight">
+    <p><strong>好的示例：</strong><br>
+    "有些话在心里念叨了很久，写下来又撕掉。这次我把它藏进了 60 片碎片里。等你拼完，就能看到了。"</p>
+  </div>
+  <div class="highlight" style="border-left-color: #C44A3F; background: linear-gradient(135deg, #FFF5F5, #FFF0F0);">
+    <p><strong>避免的示例：</strong><br>
+    "超感人的拼图礼物！送TA绝对感动哭！限时优惠，赶快下单吧！"</p>
+  </div>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 06</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 7 · LOGO                             -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">05 · Visual Identity — Logo</div>
+    <h1>Logo 规范</h1>
+    <p>品牌识别的核心符号</p>
+  </div>
+
+  <h3>标准 Logo</h3>
+  <p>「碎碎念」品牌 Logo 以手写感字体为主体，传递温暖、手工、独一无二的情感特质。</p>
+
+  <div class="logo-showcase">
+    <div class="logo-box light">
+      <div style="font-size:2.4rem; font-weight:700; color:#3A2213; letter-spacing:0.08em;">碎碎念</div>
+      <div class="logo-label">标准版 · 浅色背景</div>
+    </div>
+    <div class="logo-box dark">
+      <div style="font-size:2.4rem; font-weight:700; color:#FFF; letter-spacing:0.08em;">碎碎念</div>
+      <div class="logo-label">反白版 · 深色背景</div>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">Logo 安全空间</h3>
+  <p>为确保 Logo 在任何应用中清晰可见，四周需保留最小安全空间。以 Logo 中"碎"字的高度为 <strong>X</strong>，安全空间为 <strong>0.5X</strong>。</p>
+  <div class="img-placeholder" style="height:160px;">
+    [ 安全空间示意图 — Logo 四周保留 0.5 倍字高的留白 ]
+  </div>
+
+  <h3 class="mt-lg">Logo 最小尺寸</h3>
+  <table>
+    <tr><th>应用场景</th><th>最小宽度</th><th>说明</th></tr>
+    <tr><td>印刷（包装/卡片）</td><td>20mm</td><td>保证手写笔触清晰可辨</td></tr>
+    <tr><td>屏幕（电商/社交）</td><td>80px</td><td>在手机屏幕上清晰显示</td></tr>
+    <tr><td>特殊工艺（烫金/压印）</td><td>15mm</td><td>需根据工艺调整细节</td></tr>
+  </table>
+
+  <h3 class="mt-lg">Logo 使用禁忌</h3>
+  <div class="do-dont">
+    <div class="do">
+      <h4>✅ 正确用法</h4>
+      <ul>
+        <li>使用品牌标准色或单色版本</li>
+        <li>保持与背景的足够对比度</li>
+        <li>保持标准比例，等比缩放</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>❌ 错误用法</h4>
+      <ul>
+        <li>拉伸、压缩、旋转变形</li>
+        <li>添加阴影、描边等额外效果</li>
+        <li>放在复杂纹理/图片上导致难以辨认</li>
+        <li>更改字体或字间距</li>
+        <li>使用非品牌色系配色</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 07</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 8 · COLOR SYSTEM                     -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">06 · Visual Identity — Color</div>
+    <h1>色彩体系</h1>
+    <p>色彩是品牌感知的第一语言</p>
+  </div>
+
+  <h3>主色系 · 暖杏色</h3>
+  <p>暖杏色源自手工纸张的自然色调，传递温暖、质朴、手工感。这是碎碎念最核心的品牌识别色。</p>
+  <div class="color-row">
+    <div class="color-item">
+      <div class="color-swatch" style="background:#E8986C;"></div>
+      <div class="color-name">品牌杏</div>
+      <div class="color-code">#E8986C<br>CMYK 0 45 55 5</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#F5D5C3;"></div>
+      <div class="color-name">浅杏</div>
+      <div class="color-code">#F5D5C3<br>CMYK 0 18 22 2</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#C28E70;"></div>
+      <div class="color-name">深杏</div>
+      <div class="color-code">#C28E70<br>CMYK 0 38 50 24</div>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">辅色系 · 大地棕</h3>
+  <p>大地棕用于文字、边框、辅助元素，为品牌增添沉稳与信赖感。</p>
+  <div class="color-row">
+    <div class="color-item">
+      <div class="color-swatch" style="background:#3A2213;"></div>
+      <div class="color-name">深棕</div>
+      <div class="color-code">#3A2213<br>CMYK 0 40 65 78</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#5A3A28;"></div>
+      <div class="color-name">中棕</div>
+      <div class="color-code">#5A3A28<br>CMYK 0 35 55 65</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#8B6B58;"></div>
+      <div class="color-name">浅棕</div>
+      <div class="color-code">#8B6B58<br>CMYK 0 22 35 45</div>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">背景与底色</h3>
+  <div class="color-row">
+    <div class="color-item">
+      <div class="color-swatch" style="background:#FBF9F6; border:1px solid #EDE0D7;"></div>
+      <div class="color-name">米白</div>
+      <div class="color-code">#FBF9F6</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#FFF8F0; border:1px solid #F0E8E0;"></div>
+      <div class="color-name">暖白</div>
+      <div class="color-code">#FFF8F0</div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#FAF7F3; border:1px solid #F0E8E0;"></div>
+      <div class="color-name">奶灰</div>
+      <div class="color-code">#FAF7F3</div>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">色彩使用比例建议</h3>
+  <table>
+    <tr><th>色彩角色</th><th>色值</th><th>建议占比</th><th>主要应用</th></tr>
+    <tr><td>背景/留白</td><td>米白 #FBF9F6</td><td>50-60%</td><td>页面背景、包装底色</td></tr>
+    <tr><td>品牌主色</td><td>品牌杏 #E8986C</td><td>15-25%</td><td>重点元素、按钮、强调</td></tr>
+    <tr><td>文字/结构</td><td>深棕 #3A2213</td><td>10-15%</td><td>标题、正文、边框</td></tr>
+    <tr><td>辅助点缀</td><td>浅杏 #F5D5C3</td><td>5-10%</td><td>色块、分隔、装饰</td></tr>
+  </table>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 08</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 9 · TYPOGRAPHY                       -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">07 · Visual Identity — Typography</div>
+    <h1>字体规范</h1>
+    <p>文字的形态即品牌的语气</p>
+  </div>
+
+  <h3>品牌标识字体</h3>
+  <p>「碎碎念」品牌名使用<strong>手写风格字体</strong>，传达温暖、手作、独一无二的情感。</p>
+  <div class="highlight">
+    <p><strong>推荐：</strong>使用具有手工笔触感的手写体/书法体，字重适中，不宜过细（显冷淡）或过粗（显笨拙）。</p>
+  </div>
+
+  <h3 class="mt-lg">应用字体系统</h3>
+  <table>
+    <tr><th>层级</th><th>推荐字体</th><th>字重</th><th>应用场景</th></tr>
+    <tr>
+      <td><strong>一级标题</strong></td>
+      <td>思源宋体 / Noto Serif SC</td>
+      <td>Bold 700</td>
+      <td>页面大标题、包装主文案</td>
+    </tr>
+    <tr>
+      <td><strong>二级标题</strong></td>
+      <td>思源宋体 / Noto Serif SC</td>
+      <td>SemiBold 600</td>
+      <td>板块标题、产品名</td>
+    </tr>
+    <tr>
+      <td><strong>正文</strong></td>
+      <td>思源黑体 / Noto Sans SC</td>
+      <td>Regular 400</td>
+      <td>正文、描述、说明</td>
+    </tr>
+    <tr>
+      <td><strong>强调/引用</strong></td>
+      <td>思源宋体 / Noto Serif SC</td>
+      <td>Regular 400</td>
+      <td>品牌主张、引用语</td>
+    </tr>
+    <tr>
+      <td><strong>电商用字</strong></td>
+      <td>阿里巴巴普惠体</td>
+      <td>Medium 500</td>
+      <td>电商主图、详情页</td>
+    </tr>
+    <tr>
+      <td><strong>手写/温度</strong></td>
+      <td>手写体（定制或选用）</td>
+      <td>—</td>
+      <td>Slogan、情感文案、手写区示意</td>
+    </tr>
+  </table>
+
+  <h3 class="mt-lg">字体层级示意</h3>
+  <div class="card">
+    <div class="type-item">
+      <div class="type-label">Heading 1 · 思源宋体 Bold</div>
+      <div class="type-display" style="font-family: 'Noto Serif SC', 'SimSun', serif;">拼完整，才能看懂我的心意</div>
+    </div>
+    <div class="type-item">
+      <div class="type-label">Heading 2 · 思源宋体 SemiBold</div>
+      <div style="font-size:1.3rem; font-weight:600; color:#5A3A28; font-family: 'Noto Serif SC', 'SimSun', serif;">60片秘密拼图</div>
+    </div>
+    <div class="type-item">
+      <div class="type-label">Body · 思源黑体 Regular</div>
+      <div class="type-body">有些话在心里念叨了很久，写下来又撕掉。这次我把它藏进了 60 片碎片里。</div>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">电商字号规范（参考）</h3>
+  <table>
+    <tr><th>场景</th><th>标题</th><th>副标题</th><th>正文</th></tr>
+    <tr><td>主图（800×800）</td><td>48-56px</td><td>28-32px</td><td>18-22px</td></tr>
+    <tr><td>详情页（750px宽）</td><td>40-48px</td><td>24-28px</td><td>16-20px</td></tr>
+    <tr><td>社交媒体（1080px宽）</td><td>52-64px</td><td>28-36px</td><td>20-24px</td></tr>
+  </table>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 09</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 10 · GRAPHICS & ILLUSTRATION         -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">08 · Visual Identity — Graphics</div>
+    <h1>辅助图形与插画</h1>
+    <p>丰富品牌视觉层次的表达元素</p>
+  </div>
+
+  <h3>核心辅助图形：拼图碎片</h3>
+  <p>拼图碎片是碎碎念最核心的视觉符号。碎片形态可以灵活应用于各种场景，是品牌识别的重要延伸。</p>
+
+  <div class="grid-2 my-md">
+    <div class="card">
+      <h4>碎片 · 完整形态</h4>
+      <p>6块左右的拼图碎片正在拼接中——呈现"正在进行"的仪式感。用于包装封面、主视觉。</p>
+    </div>
+    <div class="card">
+      <h4>碎片 · 散落形态</h4>
+      <p>多片碎片随机分布——呈现"期待被拼起"的状态。用于背景纹理、包装内里。</p>
+    </div>
+    <div class="card">
+      <h4>碎片 · 单一片</h4>
+      <p>单片拼图作为图标/点缀使用。用于标签、icon、社交媒体头像。</p>
+    </div>
+    <div class="card">
+      <h4>碎片 · 拼接完成</h4>
+      <p>拼图完整呈现 + 手写文字浮现。用于产品完成示意、结尾页。</p>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">辅助图形规范</h3>
+  <table>
+    <tr><th>元素</th><th>规范</th><th>说明</th></tr>
+    <tr><td>拼图凸起</td><td>圆角，不过于尖锐</td><td>保持柔和感，匹配品牌调性</td></tr>
+    <tr><td>碎片线条</td><td>0.5-1pt，深棕 #5A3A28</td><td>描边不过粗，保持精致</td></tr>
+    <tr><td>碎片间距</td><td>1-2mm（散落）/ 0（拼接）</td><td>根据场景调整</td></tr>
+    <tr><td>排列角度</td><td>散落时自然随机，不刻意</td><td>避免整齐排列，保留手工感</td></tr>
+  </table>
+
+  <h3 class="mt-lg">插画风格</h3>
+  <div class="highlight">
+    <p><strong>推荐风格：</strong>温暖手绘风 —— 线条柔和、色调温暖、有人情味的插画。避免过于几何化或冷感的矢量风格。</p>
+  </div>
+  <div class="grid-3 my-md">
+    <div class="card" style="text-align:center;">
+      <h4>人物</h4>
+      <p style="font-size:0.85rem;color:#8B7B6F;">简笔手绘，不追求写实。重在情感氛围而非细节。</p>
+    </div>
+    <div class="card" style="text-align:center;">
+      <h4>场景</h4>
+      <p style="font-size:0.85rem;color:#8B7B6F;">温暖的日常场景：写信、拆礼物、拼图、拥抱。</p>
+    </div>
+    <div class="card" style="text-align:center;">
+      <h4>装饰</h4>
+      <p style="font-size:0.85rem;color:#8B7B6F;">信封、邮票、丝带、花瓣——温柔小巧的装饰元素。</p>
+    </div>
+  </div>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 10</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 11 · PRODUCT SYSTEM                  -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">09 · Product System</div>
+    <h1>产品体系</h1>
+    <p>60片秘密拼图明信片</p>
+  </div>
+
+  <h3>核心产品规格</h3>
+  <table>
+    <tr><th>参数</th><th>规格</th><th>说明</th></tr>
+    <tr><td>品名</td><td>60片秘密拼图明信片</td><td>—</td></tr>
+    <tr><td>尺寸</td><td>12.6 × 17.6 cm</td><td>标准明信片比例，便于邮寄与收藏</td></tr>
+    <tr><td>片数</td><td>60 片</td><td>约 15-20 分钟完成，恰当的仪式时间</td></tr>
+    <tr><td>材质</td><td>白卡纸 / 白胚</td><td>支持 UV 印刷</td></tr>
+    <tr><td>正面</td><td>图案 + UV 印刷</td><td>可定制图案</td></tr>
+    <tr><td>背面</td><td>手写区 + 拼图切割</td><td>核心功能：拼完才能阅读</td></tr>
+    <tr><td>包装</td><td>信封/盒子 + 品牌封条</td><td>拆封即开始仪式</td></tr>
+  </table>
+
+  <h3 class="mt-lg">产品线规划</h3>
+  <div class="grid-3">
+    <div class="card">
+      <h3>🌿 经典系列</h3>
+      <p>固定图案设计，背面留白手写区。日常场景覆盖，常年销售。</p>
+      <p style="font-size:0.82rem;color:#C28E70; margin-top:8px;">告白 · 生日 · 感谢 · 纪念日</p>
+    </div>
+    <div class="card">
+      <h3>🎨 定制系列</h3>
+      <p>正面图案定制（照片/插画），背面手写或印刷。面向个性化需求。</p>
+      <p style="font-size:0.82rem;color:#C28E70; margin-top:8px;">情侣定制 · 企业定制 · 景区文创</p>
+    </div>
+    <div class="card">
+      <h3>🌟 联名/季节限定</h3>
+      <p>艺术家联名、节日限定款。制造话题与稀缺感。</p>
+      <p style="font-size:0.82rem;color:#C28E70; margin-top:8px;">新年 · 情人节 · 中秋 · 毕业季</p>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">核心卖点话术</h3>
+  <div class="highlight">
+    <p><strong>一句话卖点：</strong>拼完整，才能看懂我的心意 —— 60片秘密拼图明信片</p>
+  </div>
+  <div class="grid-2">
+    <div class="card"><strong>🔒 秘密感</strong><br><span style="font-size:0.88rem;color:#8B7B6F;">背面手写内容被切割成60片，不拼完看不到完整内容</span></div>
+    <div class="card"><strong>🎁 仪式感</strong><br><span style="font-size:0.88rem;color:#8B7B6F;">拆封→碎片散落→一片片拼起→文字浮现，每一步都是仪式</span></div>
+    <div class="card"><strong>✍️ 手写温度</strong><br><span style="font-size:0.88rem;color:#8B7B6F;">手写文字保留了书写者的笔迹与情绪，印刷无法替代</span></div>
+    <div class="card"><strong>🖼️ 可留存</strong><br><span style="font-size:0.88rem;color:#8B7B6F;">拼完后可装裱成画框，作为永久的情感纪念</span></div>
+  </div>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 11</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 12 · PACKAGING                       -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">10 · Packaging</div>
+    <h1>包装规范</h1>
+    <p>包装是品牌体验的第一道仪式</p>
+  </div>
+
+  <h3>包装设计理念</h3>
+  <div class="highlight">
+    <p><strong>拆封 = 仪式开始。</strong>包装不仅是保护产品，更是"揭秘体验"的序章。从拆开包装的那一刻，用户就进入了碎碎念设计的情感旅程。</p>
+  </div>
+
+  <h3>标准包装结构</h3>
+  <table>
+    <tr><th>层级</th><th>形态</th><th>材质建议</th><th>品牌元素</th></tr>
+    <tr><td><strong>外封套</strong></td><td>牛皮纸信封 / 天地盖盒</td><td>牛皮纸 200g+ / 灰板裱纸</td><td>Logo + Slogan + 碎片图案</td></tr>
+    <tr><td><strong>封条/贴纸</strong></td><td>圆形/异形贴纸</td><td>半透明硫酸纸 / 和纸</td><td>Logo + 「拆开，开始拼」</td></tr>
+    <tr><td><strong>内衬</strong></td><td>拼图托底 + 说明卡</td><td>白卡纸</td><td>品牌色 + 使用说明</td></tr>
+    <tr><td><strong>碎片包装</strong></td><td>透明袋 / 硫酸纸袋</td><td>OPP袋 / 硫酸纸</td><td>品牌封口贴</td></tr>
+  </table>
+
+  <h3 class="mt-lg">包装色彩规范</h3>
+  <div class="do-dont">
+    <div class="do">
+      <h4>✅ 推荐</h4>
+      <ul>
+        <li>牛皮纸原色 + 品牌杏色点缀</li>
+        <li>米白底 + 深棕文字 + 杏色强调</li>
+        <li>暖白色系大面积留白</li>
+        <li>细节处使用烫金/烫银工艺</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>❌ 避免</h4>
+      <ul>
+        <li>大面积使用深色或黑色</li>
+        <li>高饱和度荧光色</li>
+        <li>过于复杂的图案堆叠</li>
+        <li>反光材质/镭射效果</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">包装文案规范</h3>
+  <p><strong>外包装必须包含：</strong>品牌 Logo、产品名「60片秘密拼图明信片」、Slogan「拼完整，才能看懂我的心意」、拼图片数标识。</p>
+  <p class="mt-sm"><strong>可选元素：</strong>品牌故事一句话、使用说明二维码、社交账号。</p>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 12</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 13 · E-COMMERCE VISUAL               -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">11 · E-Commerce Visual</div>
+    <h1>电商视觉规范</h1>
+    <p>在货架中建立统一的品牌识别</p>
+  </div>
+
+  <h3>主图规范（800×800px）</h3>
+  <table>
+    <tr><th>图序</th><th>内容</th><th>视觉重点</th></tr>
+    <tr><td>第1张</td><td>产品正面 + 核心卖点</td><td>产品清晰、Slogan 醒目、品牌色背景</td></tr>
+    <tr><td>第2张</td><td>碎片散落状态</td><td>展示"秘密"概念——碎片 + "背面藏了话"</td></tr>
+    <tr><td>第3张</td><td>拼图过程展示</td><td>几片正在拼接中的特写，展示仪式感</td></tr>
+    <tr><td>第4张</td><td>背面手写区特写</td><td>手写文字、笔迹温度</td></tr>
+    <tr><td>第5张</td><td>使用场景</td><td>送礼/拆封/拼图/装裱 场景</td></tr>
+  </table>
+
+  <h3 class="mt-lg">详情页结构建议</h3>
+  <table>
+    <tr><th>模块</th><th>内容</th><th>调性</th></tr>
+    <tr><td>① 场景共鸣</td><td>"有些话说不出口？"→ 情感痛点引入</td><td>温柔、共鸣</td></tr>
+    <tr><td>② 产品揭秘</td><td>展示产品正面→散落碎片→拼完→文字浮现的全流程</td><td>好奇、惊喜</td></tr>
+    <tr><td>③ 核心卖点</td><td>秘密感 / 仪式感 / 手写温度 / 可留存 四大卖点逐一展开</td><td>理性信任</td></tr>
+    <tr><td>④ 使用场景</td><td>告白 · 生日 · 闺蜜 · 邀请函 · 团建 · 文创</td><td>场景带入</td></tr>
+    <tr><td>⑤ 规格参数</td><td>尺寸、片数、材质、包装内容</td><td>清晰、可信</td></tr>
+    <tr><td>⑥ 定制说明</td><td>如需定制图案/文字的操作流程</td><td>贴心、简洁</td></tr>
+    <tr><td>⑦ 情感收尾</td><td>"等你拼完，就能看到了"——回到情感主线闭环</td><td>余韵</td></tr>
+  </table>
+
+  <h3 class="mt-lg">电商文案关键词库</h3>
+  <div class="grid-4">
+    <div class="card" style="text-align:center; padding:16px;">秘密</div>
+    <div class="card" style="text-align:center; padding:16px;">拼图</div>
+    <div class="card" style="text-align:center; padding:16px;">手写</div>
+    <div class="card" style="text-align:center; padding:16px;">心意</div>
+    <div class="card" style="text-align:center; padding:16px;">惊喜</div>
+    <div class="card" style="text-align:center; padding:16px;">仪式感</div>
+    <div class="card" style="text-align:center; padding:16px;">走心</div>
+    <div class="card" style="text-align:center; padding:16px;">好奇心</div>
+  </div>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 13</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 14 · COMMUNICATION                   -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">12 · Brand Communication</div>
+    <h1>品牌传播规范</h1>
+    <p>让每一次发声都为品牌加分</p>
+  </div>
+
+  <h3>社交媒体内容矩阵</h3>
+  <table>
+    <tr><th>平台</th><th>内容方向</th><th>发布频率</th><th>视觉风格</th></tr>
+    <tr>
+      <td><strong>小红书</strong></td>
+      <td>开箱体验、手写分享、礼物攻略、真实用户故事</td>
+      <td>3-5篇/周</td>
+      <td>温暖、生活感、高质感图片</td>
+    </tr>
+    <tr>
+      <td><strong>抖音/视频号</strong></td>
+      <td>拼图过程、惊喜反应、创意玩法、产品制作过程</td>
+      <td>2-3条/周</td>
+      <td>真实、情绪丰富、节奏舒缓</td>
+    </tr>
+    <tr>
+      <td><strong>微信公众号</strong></td>
+      <td>品牌故事、深度情感内容、用户投稿、新品发布</td>
+      <td>1-2篇/周</td>
+      <td>精致排版、文艺质感</td>
+    </tr>
+    <tr>
+      <td><strong>微博</strong></td>
+      <td>话题互动、用户 UGC 转发、节点营销</td>
+      <td>日常维护</td>
+      <td>轻松、互动感</td>
+    </tr>
+  </table>
+
+  <h3 class="mt-lg">话题标签体系</h3>
+  <div class="highlight">
+    <p><strong>品牌核心话题：</strong>#碎碎念 #拼完整才能看懂我的心意 #秘密拼图</p>
+    <p class="mt-sm"><strong>场景话题：</strong>#走心礼物 #告白神器 #闺蜜生日礼物 #创意邀请函</p>
+    <p class="mt-sm"><strong>UGC 话题：</strong>#我的碎碎念 #写给TA的秘密 #60片的心意</p>
+  </div>
+
+  <h3 class="mt-lg">传播视觉规范</h3>
+  <div class="do-dont">
+    <div class="do">
+      <h4>✅ DO</h4>
+      <ul>
+        <li>所有传播物料使用品牌色系</li>
+        <li>图片色调温暖、光线柔和</li>
+        <li>露出品牌 Logo（保持安全空间）</li>
+        <li>产品图片保持高质量，统一调色</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <h4>❌ DON'T</h4>
+      <ul>
+        <li>使用与品牌调性不符的冷色调滤镜</li>
+        <li>过度修图失去真实感</li>
+        <li>Logo 变形或变色</li>
+        <li>与其他品牌素材混用</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 14</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 15 · BRAND TOUCHPOINTS               -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">13 · Brand Touchpoints</div>
+    <h1>品牌触点应用</h1>
+    <p>品牌在全链路的统一呈现</p>
+  </div>
+
+  <h3>关键触点一览</h3>
+  <div class="grid-2">
+    <div class="app-card">
+      <div class="app-visual">[ 产品包装 ]</div>
+      <div class="app-info">
+        <h4>产品包装</h4>
+        <p>触达率最高的品牌载体。牛皮纸信封/盒装 + 品牌封条 + 内卡。</p>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="app-visual">[ 电商页面 ]</div>
+      <div class="app-info">
+        <h4>电商页面</h4>
+        <p>主图、详情页、店铺首页——品牌色的统一应用。</p>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="app-visual">[ 社交媒体 ]</div>
+      <div class="app-info">
+        <h4>社交媒体</h4>
+        <p>头像、封面、帖子模板——统一的视觉语言。</p>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="app-visual">[ 产品本身 ]</div>
+      <div class="app-info">
+        <h4>产品本身</h4>
+        <p>拼图正面图案、背面手写区设计、感谢卡。</p>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="app-visual">[ 快递包装 ]</div>
+      <div class="app-info">
+        <h4>快递包装</h4>
+        <p>外箱贴纸、胶带、开箱文案——不应被忽略的品牌机会。</p>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="app-visual">[ 售后服务 ]</div>
+      <div class="app-info">
+        <h4>售后服务</h4>
+        <p>感谢卡、售后卡、复购优惠券——延续品牌体验。</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="mt-lg">售后卡/感谢卡规范</h3>
+  <div class="highlight">
+    <p><strong>必备内容：</strong>品牌 Logo + 一句温暖的感谢 + 社交媒体入口 + 复购引导</p>
+    <p class="mt-sm"><strong>推荐文案：</strong>"谢谢你选择碎碎念。希望这60片心意，已经完整地传达到了那个人心里。—— 碎碎念团队"</p>
+  </div>
+
+  <div class="page-footer">碎碎念 · 品牌手册 · 15</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 16 · END PAGE                        -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="end-page">
+    <div style="font-size:3rem; margin-bottom:24px;">🧩</div>
+    <h1>碎碎念</h1>
+    <p style="font-size:1.2rem; color:#C28E70; margin-bottom:32px;">拼完整，才能看懂我的心意</p>
+    <div class="cover-divider"></div>
+    <p>
+      本手册为碎碎念品牌体系的核心文档<br>
+      所有品牌应用请参照本手册规范执行<br>
+      如有疑问请联系品牌负责人
+    </p>
+    <p style="margin-top:32px; font-size:0.8rem; color:#C4B4A6;">
+      版本 v1.0 · 2025 · 内部资料
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FLOATING PRINT BUTTON (no-print)          -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="no-print" style="position:fixed; bottom:24px; right:24px; z-index:999;">
+  <button onclick="window.print()" style="
+    background:#C28E70; color:#fff; border:none; padding:12px 24px;
+    border-radius:24px; font-size:0.9rem; cursor:pointer;
+    box-shadow:0 4px 16px rgba(194,142,112,0.4);
+    font-family: inherit; letter-spacing:0.04em;
+  ">🖨️ 打印 / 导出 PDF</button>
+</div>
+
+</body>
+</html>
